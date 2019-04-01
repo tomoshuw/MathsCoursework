@@ -12,3 +12,8 @@ data = history[0].split()
 transactions = data[2]
 customers = data[0]
 items = data[1]
+
+item_dictionary = {}
+history_list  =[]
+
+raw_history.close()
