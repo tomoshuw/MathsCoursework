@@ -67,3 +67,6 @@ queries = open('queries.txt', 'r')
 for query in queries: 
 	query = query.strip().split() 
 	query_list.append(query) 
+
+for each_query in queries:
+	print("Shopping Cart: " + each_query)
