@@ -68,5 +68,33 @@ for query in queries:
 	query = query.strip().split() 
 	query_list.append(query) 
 
-for each_query in queries:
-	print("Shopping Cart: " + each_query)
+for each_query in query_list:
+	print("Shopping cart: ",*query) 
+	min_angle ="0"
+	recommendDictionary = {}
+	for products in each_query:
+		matching_angles = []
+		matching_angles_id=[]
+		temp = []
+		for obj in range(1, number_of_items + 1):
+			if int(products)>obj and str(obj) not in each_query:
+				temp.append(angles.get(str(obj) +" "+ products))
+				matching_angles_id.append(obj)
+			elif obj > int(products) and str(obj) not in each_query:
+				temp.append(angles.get(products +" "+str(obj))) 
+				matching_angles_id.append(obj)
+
+		if min_angle == 90:
+			print("Item: "+ str(products)+ " no match")
+		else: 
+			print("Item: "+ str(products)+ ";", "match: "+ str(matching_angles_id[matching_angles.index(min_angle )])+ "; "+ "angle: "+ str(round(min_angle ,2)))		
+			recommendDictionary[str(matching_angles_id[matching_angles.index(min_angle )])] = min_angle  
+		
+		sortedrecommendDictionary = sorted(recommendDictionary.items(), key=operator.itemgetter(1)) 
+		
+
+	rec_list = [x[0] for x in sortedrecommendDictionary] 
+	if rec_list == ['1']:
+		print("Recommend: ")
+	else:
+		print("Recommend:", " ".join(rec_list))
